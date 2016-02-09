@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-md-12 row-content">
 
-        <div class="block" ng-click="openForm()">
+        <div class="block" ng-click="openForm()" ng-show='progressReport'>
             <div class="round">
                 <img src="img/icon01.png" width="39" height="44" alt="">
             </div>
@@ -9,7 +9,7 @@
                 <p>Progress Report</p>
             </div>
         </div>
-        <div class="block" ng-click="openForm1()">
+        <div class="block" ng-click="openForm1()" ng-show='courseCompletionReport'>
             <div class="round">
                 <img src="img/icon01.png" width="39" height="44" alt="">
             </div>
@@ -17,7 +17,7 @@
                 <p>Course Completion Report</p>
             </div>
         </div>
-        <div class="block" ng-click="openForm2()">
+        <div class="block" ng-click="openForm2()" ng-show='studentActivityReport'>
             <div class="round">
                 <img src="img/icon01.png" width="39" height="44" alt="">
             </div>

@@ -1,5 +1,5 @@
 'use strict'
-var factoryModule = angular.module('studentActivityReports.factories', []);
+var factoryModule = angular.module('studentActivityReportsTeacher.factories', []);
 
 factoryModule.factory('getData', function($http) {
 

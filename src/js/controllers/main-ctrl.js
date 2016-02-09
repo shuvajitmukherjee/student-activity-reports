@@ -1,15 +1,33 @@
 'use strict'
 var constantModule = angular.module('constant', []);
 
-constantModule.constant('$theme',{
-   "theme":"black"
+constantModule.constant('$theme', {
+    "theme": "black"
 });
 
 var homeModule = angular.module('studentActivityReports.home', ['constant']);
 
 
-homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location','$theme', function($scope, $rootScope, $location,theme) {
+homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme', '$routeParams', function ($scope, $rootScope, $location, theme, $routeParams) {
 
+    $scope.progressReport=true;
+    $scope.courseCompletionReport=true;
+    $scope.studentActivityReport=true;
+    
+    
+    $rootScope.user_id = $routeParams.user_id;
+    $scope.role = $routeParams.role;
+    
+    if($scope.role==='student'){
+        $scope.courseCompletionReport=false;
+    }
+    else if($scope.role==='teacher'){
+        $scope.progressReport=false;
+    }
+    
+
+    console.log('$routeParams', $routeParams);
+    console.log('role= ', $routeParams.role);
     console.dir("Inside MainCtrl");
     console.log(theme.theme);
     $rootScope.isblue = true;
@@ -17,26 +35,26 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location','$theme',
     $scope.teacherId = "12345";
     $scope.extDataArr = ["checkAll", "uncheckAll"];
     $scope.extData = $scope.extDataArr.join(",");
-    
-    $scope.roles={
-        "student":[{"text":"Progress Report"},{"text":"Student Activity Report"}],
-        "teacher":[{"text":"Course Completion Report"},{"text":"Student Activity Report"}],
-        "admin":[{"text":"Progress Report"},{"text":"Course Completion Report"},{"text":"Student Activity Report"}]
+
+    $scope.roles = {
+        "student": [{ "text": "Progress Report" }, { "text": "Student Activity Report" }],
+        "teacher": [{ "text": "Course Completion Report" }, { "text": "Student Activity Report" }],
+        "admin": [{ "text": "Progress Report" }, { "text": "Course Completion Report" }, { "text": "Student Activity Report" }]
     };
-    
+
     console.log($scope.roles);
 
-    $scope.openForm2 = function() {
+    $scope.openForm2 = function () {
         $location.path("/student-activity-reports/A12345");
     };
-    $scope.openForm1 = function() {
+    $scope.openForm1 = function () {
         $location.path("/teacher-form/A12345");
     };
-    $scope.openForm = function() {
+    $scope.openForm = function () {
         $location.path("/admin-form/A12345");
     };
 
-    $scope.go = function ( path ) {
-        $location.path( path );
+    $scope.go = function (path) {
+        $location.path(path);
     };
 }]);
