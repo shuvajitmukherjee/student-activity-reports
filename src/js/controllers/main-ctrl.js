@@ -8,25 +8,56 @@ constantModule.constant('$theme', {
 var homeModule = angular.module('studentActivityReports.home', ['constant']);
 
 
-homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme', '$routeParams', function ($scope, $rootScope, $location, theme, $routeParams) {
+homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme', '$routeParams', 'validateUrlData', function ($scope, $rootScope, $location, theme, $routeParams, validateUrlData) {
 
-    $scope.progressReport=true;
-    $scope.courseCompletionReport=true;
-    $scope.studentActivityReport=true;
-    
-    
+    $scope.progressReport = false;
+    $scope.courseCompletionReport = false;
+    $scope.studentActivityReport = false;
+
+
     $rootScope.userid = $routeParams.userid;
     $rootScope.role = $routeParams.role;
-    console.log($rootScope.role,$rootScope.userid);
+    console.log($rootScope.role, $rootScope.userid);
     console.log("*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-    
-    if($scope.role==='student'){
-        $scope.courseCompletionReport=false;
+
+    validateUrlData._get($routeParams.role, $routeParams.userid)
+        .then(function onsuccess(response) {
+            console.log(response.data);
+
+            $scope.showTiles(response.data);
+
+        }, function onError(errResponse) {
+            console.log("err Response ", errResponse);
+            $scope.blockUser(errResponse)
+        });
+
+    $scope.showTiles = function (authResponse) {
+        console.log(authResponse);
+        // $scope.courseArr=studentCourse.data.course;
+        console.log(authResponse);
+
+        if ($scope.role === 'student') {
+            $scope.progressReport = true;
+            $scope.studentActivityReport = true;
+        }
+        else if ($scope.role === 'teacher') {
+            $scope.courseCompletionReport = true;
+            $scope.studentActivityReport = true;
+
+        }
+        else if ($scope.role === 'admin') {
+            $scope.progressReport = true;
+            $scope.courseCompletionReport = true;
+            $scope.studentActivityReport = true;
+
+        }
     }
-    else if($scope.role==='teacher'){
-        $scope.progressReport=false;
+    $scope.blockUser = function (authResponse) {
+        console.log(authResponse);
+        // $scope.courseArr=studentCourse.data.course;
+        console.log(authResponse);
     }
-    
+
 
     console.log('$routeParams', $routeParams);
     console.log('role= ', $routeParams.role);

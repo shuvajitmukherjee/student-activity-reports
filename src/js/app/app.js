@@ -11,7 +11,8 @@ var app = angular.module('studentActivityReports', [
     'studentActivityReports.routing',
     'studentActivityReports.factories',
     'studentActivityReports.home',
-    'studentActivityReports.studentDetails'
+    'studentActivityReports.studentDetails',
+   
 ]);
 
 app.config([
