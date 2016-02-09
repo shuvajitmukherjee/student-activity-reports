@@ -3,11 +3,14 @@ var factoryModule = angular.module('studentActivityReports.factories', []);
 
 factoryModule.factory('getData', function($http) {
 
-    var basePath = '/src/js/data/';
+    var basePath = 'http://172.16.9.197:8282/gage-service/service/course?';
 
     return {
-        _get: function(str) {
-            return $http.get(basePath + str + '.json');
+        _get: function(role,userid,__$scopecourseArr) {
+            console.log("*******************************************");
+            console.log(role,userid);
+             return $http.get(basePath +"role="+role+"&userids="+userid)
+             
         }
     };
 });

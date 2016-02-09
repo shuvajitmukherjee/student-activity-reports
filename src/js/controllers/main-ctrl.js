@@ -15,8 +15,10 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
     $scope.studentActivityReport=true;
     
     
-    $rootScope.user_id = $routeParams.user_id;
-    $scope.role = $routeParams.role;
+    $rootScope.userid = $routeParams.userid;
+    $rootScope.role = $routeParams.role;
+    console.log($rootScope.role,$rootScope.userid);
+    console.log("*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     
     if($scope.role==='student'){
         $scope.courseCompletionReport=false;
@@ -45,13 +47,13 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
     console.log($scope.roles);
 
     $scope.openForm2 = function () {
-        $location.path("/student-activity-reports/A12345");
+        $location.path("/student-activity-reports");
     };
     $scope.openForm1 = function () {
-        $location.path("/teacher-form/A12345");
+        $location.path("/teacher-form");
     };
     $scope.openForm = function () {
-        $location.path("/admin-form/A12345");
+        $location.path("/admin-form");
     };
 
     $scope.go = function (path) {

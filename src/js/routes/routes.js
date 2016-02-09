@@ -35,17 +35,17 @@ routingModule.provider('routeInfo', function() {
                     controller: 'MainCtrl',
                 },
                 {
-                    route: '/student-activity-reports/:teacherId',
+                    route: '/student-activity-reports',
                     templateUrl: 'js/partials/student-activity-reports.html',
                     controller: 'studentDetailsCtrl'
                 },
                 {
-                    route: '/teacher-form/:teacherId',
+                    route: '/teacher-form',
                     templateUrl: 'js/partials/teacher-form.html',
                     controller: 'studentDetailsCtrl'
                 },
                 {
-                    route: '/admin-form/:teacherId',
+                    route: '/admin-form',
                     templateUrl: 'js/partials/admin-form.html',
                     controller: 'studentDetailsCtrl'
                 }
