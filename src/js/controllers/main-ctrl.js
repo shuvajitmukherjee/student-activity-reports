@@ -24,6 +24,7 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
 
    validateUrlData._get($routeParams.role, $routeParams.userid,$routeParams.token)
         .then(function onsuccess(response) {
+        console.log($routeParams.token+  " $routeParams.token")
             console.log(response.data);
 
             $scope.showTiles(response.data);

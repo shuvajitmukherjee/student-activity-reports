@@ -22,6 +22,46 @@ http://172.16.9.197:8282/gage-service/service/domain/list/45685236?token=~SKq1BA
 });
 
 
+factoryModule.factory('getSchoolStudent', function($http, $rootScope) {
+
+
+    var basePath = "http://172.16.9.197:8282/gage-service/service/student?entitytype=school&entityids="
+    //45685775?roletype=teacher&entitytype=D|C&token=~SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB"
+    return {
+        _get: function(schoolIdsArray) {
+           // console.log(role,userid);
+           // var token = _token;
+           // var entitytype = 'D|C';
+           // $rootScope.showoverlay = true;
+            console.log(schoolIdsArray.join());
+            var __url = basePath +schoolIdsArray.join();
+            console.log(__url);
+            return $http.get(__url);
+             
+        }
+    };
+});
+factoryModule.factory('getSchoolStudentCourse', function($http, $rootScope) {
+
+
+    var basePath = "http://172.16.9.197:8282/gage-service/service/course?role=student&userids="
+    //45685775?roletype=teacher&entitytype=D|C&token=~SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB"
+//    http://172.16.9.197:8282/gage-service/service/course?role=student&userids=43634545,98545908
+    return {
+        _get: function(schoolStudentIdsArray) {
+           // console.log(role,userid);
+           // var token = _token;
+           // var entitytype = 'D|C';
+           // $rootScope.showoverlay = true;
+            console.log(schoolStudentIdsArray.join());
+            var __url = basePath +schoolStudentIdsArray.join();
+            console.log(__url);
+            return $http.get(__url);
+             
+        }
+    };
+});
+
 
 factoryModule.factory('getData', function($http) {
 

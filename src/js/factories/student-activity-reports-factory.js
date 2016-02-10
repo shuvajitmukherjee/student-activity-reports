@@ -8,18 +8,18 @@ factoryModule.factory('validateUrlData', function($http, $rootScope) {
     //45685775?roletype=teacher&entitytype=D|C&token=~SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB"
     return {
         _get: function(role,userid,_token) {
-            console.log("*******************************************");
             console.log(role,userid);
             var token = _token;
             var entitytype = 'D|C';
             $rootScope.showoverlay = true;
-            var __url = basePath +userid+'?roletype='+role+'&entitytype='+entitytype+'&token='+token;
+            var __url = basePath +userid+'?roletype='+role+'&entitytype='+entitytype+'&token='+_token;
             console.log(__url);
             return $http.get(__url);
              
         }
     };
 });
+
 
 factoryModule.factory('getData', function($http) {
 

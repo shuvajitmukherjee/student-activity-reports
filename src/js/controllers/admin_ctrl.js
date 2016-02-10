@@ -1,6 +1,6 @@
 'use strict'
 var admModule = angular.module('studentActivityReports.adminDetails', []);
-admModule.controller('adminctrl', ['$scope', '$rootScope','$routeParams', 'getSchoolData', 'getEnrollmentStatus', function($scope, $rootScope, $routeParams, getSchoolData, getEnrollmentStatus) {
+admModule.controller('adminctrl', ['$scope', '$rootScope','$routeParams', 'getSchoolData', 'getSchoolStudent','getEnrollmentStatus','getSchoolStudentCourse', function($scope, $rootScope, $routeParams, getSchoolData,getSchoolStudent, getEnrollmentStatus,getSchoolStudentCourse) {
 
     console.dir("**Inside Admin Ctrl**");
     
@@ -15,7 +15,16 @@ admModule.controller('adminctrl', ['$scope', '$rootScope','$routeParams', 'getSc
     $scope.endDateNotSelected=false;
     $scope.schoolListIds =[];
     $scope.multiselectModelAdminSchool =[];
-    $scope.allSchoolId =[];
+//    $scope.allSchoolId =[];
+    $scope.allSchoolIdArrays = [];
+    
+    
+    $scope.studentListIds =[];
+    $scope.multiselectModelAdminStudent = [];
+    $scope.allSchoolStudentIdArrays=[]; 
+    
+     $scope.studentCourseListIds = [];
+     $scope.multiselectModelAdminStudentCourse = [];
 console.log("$scope.userId  ",$scope.userId );
 console.log("$routeParams.userId  ",$rootScope.admindetail);
 ///console.log("$scope.userId  ",$scope.userId );
@@ -31,9 +40,22 @@ console.log("$routeParams.userId  ",$rootScope.admindetail);
     */
     $scope.endDate = "04-02-2016";
 
-    $scope.getAllSchollDomainId = function(){
-        
-//        for(var i=0; i<$scope.schoolList.length;i++)
+    $scope.getAllSchollDomainId = function(dataresopnse){
+        $scope.allSchoolIdArrays =[];
+        console.log(dataresopnse);
+        for(var i=0; i<dataresopnse.data.domains.length;i++){
+            $scope.allSchoolIdArrays.push(dataresopnse.data.domains[i].id)
+        }
+        console.log("All Id Array ",$scope.allSchoolIdArrays);
+    }
+    
+     $scope.getAllSchollStudentCourseId = function(dataresopnse){
+        $scope.allSchoolStudentIdArrays =[];
+        console.log(dataresopnse);
+        for(var i=0; i<dataresopnse.length;i++){
+            $scope.allSchoolStudentIdArrays.push(dataresopnse[i].id)
+        }
+        console.log("All Id Array ",$scope.allSchoolStudentIdArrays);
     }
     /*
     * @courseArr: Courses received from server
@@ -47,15 +69,48 @@ console.log("$routeParams.userId  ",$rootScope.admindetail);
     .then(function onsuccess(response){
                 console.log(response.data);  
                 $scope.setData(response.data); 
-             });
+                $scope.getAllSchollDomainId(response.data);
+                getSchoolStudent._get($scope.allSchoolIdArrays)
+                .then(function onSuccess(res){
+                    console.log("response of _getschool Data  ",res);
+                    
+                   $scope.setDataoFStuds(res.data.data.user);
+                    $scope.getAllSchollStudentCourseId(res.data.data.user);
+                    
+                    getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
+                    .then(function onSuccess(res){
+                        console.log("response of allSchoolStudentIdArrays Data  ",res);
+                        $scope.setDataoFSchoolStudsCourse(res.data.data.course);
+                    },function onError(res){
+                        console.log("response of allSchoolStudentIdArrays Data Error  ",res);
+                    });  
+                },function onError(res){
+                    console.log("response of _getschool Data Error  ",res);
+                });  
+            },function onerror(response){
+                console.log("Error has been occured");
+                console.log(response.data);
+        });
              
-              $scope.setData=function(studentCourse){
-                  console.log(studentCourse);
-                  $scope.schoolList=studentCourse.data.domains;
-  
-                  console.log($scope.schoolList);
-              } 
+    $scope.setData=function(studentCourse){
+        console.log(studentCourse);
+        $scope.schoolList=studentCourse.data.domains;
+        console.log($scope.schoolList);
+    } 
     
+     $scope.setDataoFStuds=function(schoolsStudent){
+        console.log(schoolsStudent);
+        $scope.schoolStudentList=schoolsStudent;
+        console.log($scope.schoolStudentList);
+    } 
+     
+     $scope.setDataoFSchoolStudsCourse=function(schoolsStudent){
+        console.log(schoolsStudent);
+        $scope.schoolStudentCourseList=schoolsStudent;
+        console.log($scope.schoolStudentCourseList);
+    } 
+    
+        
     // xyz = $scope.studentCourse;
    // console.log($scope.studentCourse.value.data);
   
@@ -117,6 +172,26 @@ console.log("$routeParams.userId  ",$rootScope.admindetail);
         for(var i=0;i<$scope.multiselectModelAdminCourse.length;i++) {
             $scope.schoolListIds.push($scope.multiselectModelAdminCourse[i].id);
             console.log($scope.schoolListIds);
+        }
+    }, true);
+    
+    
+     $scope.$watch('multiselectModelAdminStudent', function () {
+        $scope.studentListIds = [];
+     
+        for(var i=0;i<$scope.multiselectModelAdminStudent.length;i++) {
+            $scope.studentListIds.push($scope.multiselectModelAdminStudent[i].id);
+            console.log($scope.studentListIds);
+        }
+    }, true);
+    
+    
+     $scope.$watch('multiselectModelAdminStudentCourse', function () {
+        $scope.studentCourseListIds = [];
+     
+        for(var i=0;i<$scope.multiselectModelAdminStudentCourse.length;i++) {
+            $scope.studentCourseListIds.push($scope.multiselectModelAdminStudentCourse[i].id);
+            console.log($scope.studentCourseListIds);
         }
     }, true);
     
