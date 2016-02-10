@@ -136,4 +136,7 @@ multiselect .btn-group ul {
     opacity: 0.5;
     position: absolute;
     z-index: 10;
+}.disabledCls{
+        cursor: not-allowed !important;
+     opacity: .5;
 }

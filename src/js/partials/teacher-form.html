@@ -3,7 +3,7 @@
     <div class="col-md-12 student-form">
         <div class="row form-group">
             <div class="col-md-12">
-                <h2 class="title">Teacher Activity Details Report</h2>
+                <h2 class="title">Student Activity Details Report</h2>
             </div>
         </div>
         <div class="row form-group">
@@ -38,13 +38,19 @@
                 <p>Student(s)</p>
             </div>
             <div class="col-md-6">
-                <select class="form-control">
+                <!--<select class="form-control">
                     <option selected>All Students</option>
                     <option>Janet Young</option>
                     <option>Katie Lopez</option>
                     <option>Luke Mikelson</option>
                     <option>Megan Ronaldo</option>
-                </select>
+                </select>-->
+                <multiselect
+                  ng-model="multiselectModel2"
+                  options="c.title for c in studentArr"
+                  data-multiple="true"
+                  data-checkall="All Students">
+              </multiselect>
             </div>
         </div>
         <div class="row form-group">

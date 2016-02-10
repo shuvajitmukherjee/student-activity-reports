@@ -7,13 +7,13 @@ factoryModule.factory('validateUrlData', function($http, $rootScope) {
     var basePath = "http://172.16.9.197:8282/gage-service/service/user/rights/"
     //45685775?roletype=teacher&entitytype=D|C&token=~SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB"
     return {
-        _get: function(role,userid,__token) {
-            console.log("*******************************************",__token);
+        _get: function(role,userid,_token) {
+            console.log("*******************************************");
             console.log(role,userid);
-//            var token = "SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB";
+            var token = _token;
             var entitytype = 'D|C';
             $rootScope.showoverlay = true;
-            var __url = basePath +userid+'?roletype='+role+'&entitytype='+entitytype+'&token='+__token;
+            var __url = basePath +userid+'?roletype='+role+'&entitytype='+entitytype+'&token='+token;
             console.log(__url);
             return $http.get(__url);
              
