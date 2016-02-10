@@ -1,7 +1,7 @@
 'use strict'
 var xyz = null;
 var sarModule = angular.module('teacherActivityReports.teacherDetails', []);
-sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParams', 'getDataCourseTeacher', 'getEnrollmentStatus', function ($scope, $rootScope, $routeParams, getDataCourseTeacher, getEnrollmentStatus) {
+sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParams', 'getDataCourseTeacher', 'getEnrollmentStatus','getDataStudentTeacher', function ($scope, $rootScope, $routeParams, getDataCourseTeacher, getEnrollmentStatus,getDataStudentTeacher) {
 
     console.dir("**Inside teacherDetailsCtrl**");
     
@@ -38,7 +38,7 @@ sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParam
     $scope.enrollmentArr = getEnrollmentStatus.get();
     console.log("2378459023478927842748923749273423894792384798237498347923784");
 
-    getDataCourseTeacher._get($rootScope.role, $rootScope.userid)
+    getDataCourseTeacher._get($rootScope.role, $rootScope.userid,$rootScope.token)
         .then(function onsuccess(response) {
             console.log(response.data);  
             //  __$scopecourseArr = response.data.course;
@@ -106,17 +106,34 @@ sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParam
     $scope.$watch('selectedDate', function () {
         console.log($scope.selectedDate);
     }, true);
-    
+
     $scope.$watch('multiselectModel', function () {
-        
+
         console.log($scope.multiselectModel);
         $scope.courseIdArr = [];
-        
-        for(var i=0;i<$scope.multiselectModel.length;i++) {
+
+        for (var i = 0; i < $scope.multiselectModel.length; i++) {
             $scope.courseIdArr.push($scope.multiselectModel[i].id);
-            console.log($scope.courseIdArr);
+            console.log($scope.courseIdArr);           
         }
+        
+         getDataStudentTeacher._get($rootScope.role, $scope.courseIdArr)
+                .then(function onsuccess(response) {
+                    console.log(response.data);  
+                    //  __$scopecourseArr = response.data.course;
+                    //  $scopVar.$apply();
+                    // return response.data;
+                    $scope.setData(response.data);
+
+                });
+        
+        $scope.setData=function(studentCourse){
+                  console.log(studentCourse);
+                  $scope.courseArr=studentCourse.data.course;
+  
+                  console.log($scope.courseArr);
+              }
     }, true);
-     console.log("$scope.courseIdArr", $scope.courseIdArr);
+    console.log("$scope.courseIdArr", $scope.courseIdArr);
 
 }]);

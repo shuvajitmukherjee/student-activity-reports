@@ -19,9 +19,10 @@ factoryModule.factory('getDataStudentTeacher', function ($http) {
     var basePath = 'http://172.16.9.197:8282/gage-service/service/course?';
 
     return {
-        _get: function (role, userid, __$scopecourseArr) {
+        _get: function (role, userid) {
             console.log("*******************************************");
             console.log(role, userid);
+            console.log(basePath + "role=" + role + "&userids=" + userid);
             return $http.get(basePath + "role=" + role + "&userids=" + userid);
         }   
     };

@@ -129,3 +129,7 @@ multiselect .btn-group ul {
         margin: 25px 0 0 0;
     }
 }
+.disabledCls{
+        cursor: not-allowed !important;
+     opacity: .5;
+}

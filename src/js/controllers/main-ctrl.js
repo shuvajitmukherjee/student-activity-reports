@@ -14,13 +14,14 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
     $scope.courseCompletionReport = false;
     $scope.studentActivityReport = false;
 
-
+    $rootScope.token = $routeParams.token;
+    console.log($routeParams.token);
     $rootScope.userid = $routeParams.userid;
     $rootScope.role = $routeParams.role;
     console.log($rootScope.role, $rootScope.userid);
     console.log("*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 
-    validateUrlData._get($routeParams.role, $routeParams.userid)
+    validateUrlData._get($routeParams.role, $routeParams.userid,$rootScope.token)
         .then(function onsuccess(response) {
             console.log(response.data);
 
