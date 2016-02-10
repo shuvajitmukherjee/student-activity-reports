@@ -84,7 +84,15 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
         $location.path("/teacher-form");
     };
     $scope.openForm = function () {
-        $location.path("/admin-form");
+        if ($rootScope.role === 'admin') {
+            $location.path("/admin-form");
+        } else if ($rootScope.role === 'teacher') {
+            $location.path("/teacher-form");
+        }
+        else if ($rootScope.role === 'student') {
+            $location.path("/student-activity-reports");
+        }
+
     };
 
     $scope.go = function (path) {

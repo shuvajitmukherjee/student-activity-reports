@@ -11,13 +11,19 @@
                 <p>Course(s):</p>
             </div>
             <div class="col-md-6">
-                <select class="form-control">
+                <!--<select class="form-control">
                     <option selected>All Courses</option>
                     <option>Grade 2 Language Arts</option>
                     <option>Grade 5 Mathematics</option>
                     <option>Grade 10 Integrated Math</option>
                     <option>SINET: Biology A (Flex)</option>
-                </select>
+                </select>-->
+                <multiselect
+                  ng-model="multiselectModel"
+                  options="c.title for c in courseArr"
+                  data-multiple="true"
+                  data-checkall="All Courses">
+              </multiselect>
             </div>
         </div>
         <div class="row form-group">
