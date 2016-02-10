@@ -42,7 +42,7 @@ routingModule.provider('routeInfo', function() {
                 {
                     route: '/teacher-form',
                     templateUrl: 'js/partials/teacher-form.html',
-                    controller: 'studentDetailsCtrl'
+                    controller: 'teacherDetailsCtrl'
                 },
                 {
                     route: '/admin-form',

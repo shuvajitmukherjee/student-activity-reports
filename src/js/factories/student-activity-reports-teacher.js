@@ -1,23 +1,25 @@
 'use strict'
 var factoryModule = angular.module('studentActivityReportsTeacher.factories', []);
 
-factoryModule.factory('getData', function($http) {
+factoryModule.factory('getDataCourseTeacher', function ($http) {
 
-    var basePath = '/src/js/data/';
+    var basePath = 'http://172.16.9.197:8282/gage-service/service/course?';
 
     return {
-        _get: function(str) {
-            return $http.get(basePath + str + '.json');
+        _get: function (role, userid, __$scopecourseArr) {
+            console.log("*******************************************");
+            console.log(role, userid);
+            return $http.get(basePath + "role=" + role + "&userids=" + userid);
         }
     };
 });
 
 
-factoryModule.factory('getEnrollmentStatus', function($http) {
+factoryModule.factory('getEnrollmentStatus', function ($http) {
 
     var service = {};
 
-    service.get = function() {
+    service.get = function () {
         return [
             {
                 id: 0,

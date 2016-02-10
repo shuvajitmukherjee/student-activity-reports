@@ -1,7 +1,7 @@
 'use strict'
 var xyz=null;
 var sarModule = angular.module('teacherActivityReports.teacherDetails', []);
-sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope','$routeParams', 'getData', 'getEnrollmentStatus', function($scope, $rootScope, $routeParams, getData, getEnrollmentStatus) {
+sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope','$routeParams','getDataCourseTeacher','getEnrollmentStatus', function($scope, $rootScope, $routeParams, getDataCourseTeacher,getEnrollmentStatus) {
 
     console.dir("**Inside teacherDetailsCtrl**");
     
@@ -36,7 +36,7 @@ sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope','$routeParams
     $scope.enrollmentArr = getEnrollmentStatus.get();
     console.log("2378459023478927842748923749273423894792384798237498347923784");
     
-     getData._get($rootScope.role,$rootScope.userid)
+     getDataCourseTeacher._get($rootScope.role,$rootScope.userid)
     .then(function onsuccess(response){
                 console.log(response.data);  
               //  __$scopecourseArr = response.data.course;
@@ -48,7 +48,7 @@ sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope','$routeParams
              
               $scope.setData=function(teacherCourse){
                   console.log(teacherCourse);
-                  $scope.courseArr=teacherCourse.data.course;
+                  $scope.courseArr=teacherCourse.data.course;                 
                   console.log($scope.courseArr);
               } 
     

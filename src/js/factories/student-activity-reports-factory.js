@@ -29,8 +29,7 @@ factoryModule.factory('getData', function($http) {
         _get: function(role,userid,__$scopecourseArr) {
             console.log("*******************************************");
             console.log(role,userid);
-             return $http.get(basePath +"role="+role+"&userids="+userid);
-             
+             return $http.get(basePath +"role="+role+"&userids="+userid);        
         }
     };
 });

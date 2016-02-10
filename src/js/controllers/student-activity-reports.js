@@ -49,6 +49,7 @@ sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope','$routeParams
               $scope.setData=function(studentCourse){
                   console.log(studentCourse);
                   $scope.courseArr=studentCourse.data.course;
+  
                   console.log($scope.courseArr);
               } 
     

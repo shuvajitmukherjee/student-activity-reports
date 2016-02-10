@@ -2,17 +2,18 @@
 
 var app = angular.module('studentActivityReports', [
     'ngRoute',
-    // 'ngAnimate',
+// 'ngAnimate',
     'ngSanitize',
     'ngResource',
     'ui.multiselect',
-    // 'angularjs-dropdown-multiselect',
+// 'angularjs-dropdown-multiselect',
     'mgcrea.ngStrap.datepicker',
     'studentActivityReports.routing',
     'studentActivityReports.factories',
+    'studentActivityReportsTeacher.factories',
     'studentActivityReports.home',
     'studentActivityReports.studentDetails',
-   
+    'teacherActivityReports.teacherDetails'
 ]);
 
 app.config([
