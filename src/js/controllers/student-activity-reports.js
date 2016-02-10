@@ -1,13 +1,14 @@
 'use strict'
 var xyz=null;
 var sarModule = angular.module('studentActivityReports.studentDetails', []);
-sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope','$routeParams', 'getData', 'getEnrollmentStatus', function($scope, $rootScope, $routeParams, getData, getEnrollmentStatus) {
+sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope','$routeParams', 'getDataStudent', 'getEnrollmentStatus','getStudentCourseData',
+ function($scope, $rootScope, $routeParams, getDataStudent, getEnrollmentStatus,getStudentCourseData) {
 
     console.dir("**Inside studentDetailsCtrl**");
     
     // console.log(getData._get($rootScope.role,$rootScope.userid));
 
-    $scope.teacherId = $routeParams.teacherId;
+    $scope.teacherId = $routeParams.userId;
     $scope.details = {};
     console.log("a");
     $rootScope.isblue = false;
@@ -36,14 +37,23 @@ sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope','$routeParams
     $scope.enrollmentArr = getEnrollmentStatus.get();
     console.log("2378459023478927842748923749273423894792384798237498347923784");
     
-     getData._get($rootScope.role,$rootScope.userid)
+     getDataStudent._get($rootScope.role,$rootScope.userid)
     .then(function onsuccess(response){
                 console.log(response.data);  
-              //  __$scopecourseArr = response.data.course;
-              //  $scopVar.$apply();
-                // return response.data;
+                             
+                console.log("*********************************************")
                 $scope.setData(response.data); 
+                
+                getStudentCourseData._get($rootScope.userid)
+                .then(function onsuccess(response){
+                    console.log(response.data);  
+                             
+                    console.log("*********************************************", response.data)
+                    //$scope.setData(response.data); 
+                });
                  
+             },function onerr(res){
+                 console.log("Form Errrrrrrrrrrrrrr");
              });
              
               $scope.setData=function(studentCourse){

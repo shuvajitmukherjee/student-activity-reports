@@ -193,7 +193,7 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
                 }
 
                 function setModelValue(isMultiple) {
-                    var value, id;
+                    var value;
 
                     if (isMultiple) {
                         value = [];

@@ -1,7 +1,7 @@
 'use strict'
 var xyz = null;
 var sarModule = angular.module('teacherActivityReports.teacherDetails', []);
-sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParams', 'getDataCourseTeacher', 'getEnrollmentStatus','getDataStudentTeacher', function ($scope, $rootScope, $routeParams, getDataCourseTeacher, getEnrollmentStatus,getDataStudentTeacher) {
+sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParams', 'getDataCourseTeacher', 'getEnrollmentStatus', 'getDataStudentTeacher', function ($scope, $rootScope, $routeParams, getDataCourseTeacher, getEnrollmentStatus, getDataStudentTeacher) {
 
     console.dir("**Inside teacherDetailsCtrl**");
     
@@ -17,6 +17,9 @@ sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParam
     $scope.endDateNotSelected = false;
     $scope.multiselectModel = [];
     $scope.courseIdArr = [];
+
+    $scope.courseStudentIdArr = [];
+    $scope.multiselectModel2 = [];
 
     /*
     * @startDate: holds the start date.
@@ -38,20 +41,41 @@ sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParam
     $scope.enrollmentArr = getEnrollmentStatus.get();
     console.log("2378459023478927842748923749273423894792384798237498347923784");
 
-    getDataCourseTeacher._get($rootScope.role, $rootScope.userid,$rootScope.token)
+    getDataCourseTeacher._get($rootScope.role, $rootScope.userid, $rootScope.token)
         .then(function onsuccess(response) {
             console.log(response.data);  
             //  __$scopecourseArr = response.data.course;
             //  $scopVar.$apply();
             // return response.data;
             $scope.setData(response.data);
-
         });
 
     $scope.setData = function (teacherCourse) {
-        console.log(teacherCourse);
+        // debugger;
+        console.log(teacherCourse.data.course);
         $scope.courseArr = teacherCourse.data.course;
         console.log($scope.courseArr);
+        // $scope.courseIdArr = [];
+        for (var i = 0; i < $scope.courseArr.length; i++) {
+            $scope.courseIdArr.push($scope.courseArr[i].id);
+            console.log($scope.courseIdArr);
+        }
+
+        getDataStudentTeacher._get($rootScope.role, $scope.courseIdArr)
+            .then(function onsuccess(response) {
+                console.log(response.data);  
+                //  __$scopecourseArr = response.data.course;
+                //  $scopVar.$apply();
+                // return response.data;
+                $scope.setStudentData(response.data);
+            });
+
+        $scope.setStudentData = function (studentCourse) {
+            console.log(studentCourse);
+            $scope.studentArr = studentCourse.data.user;
+
+            console.log($scope.studentArr);
+        }
     }
 
     console.log($rootScope.value);
@@ -114,26 +138,40 @@ sarModule.controller('teacherDetailsCtrl', ['$scope', '$rootScope', '$routeParam
 
         for (var i = 0; i < $scope.multiselectModel.length; i++) {
             $scope.courseIdArr.push($scope.multiselectModel[i].id);
-            console.log($scope.courseIdArr);           
+            console.log($scope.courseIdArr);
         }
-        
-         getDataStudentTeacher._get($rootScope.role, $scope.courseIdArr)
-                .then(function onsuccess(response) {
-                    console.log(response.data);  
-                    //  __$scopecourseArr = response.data.course;
-                    //  $scopVar.$apply();
-                    // return response.data;
-                    $scope.setData(response.data);
 
-                });
-        
-        $scope.setData=function(studentCourse){
-                  console.log(studentCourse);
-                  $scope.courseArr=studentCourse.data.course;
-  
-                  console.log($scope.courseArr);
-              }
+
     }, true);
-    console.log("$scope.courseIdArr", $scope.courseIdArr);
+
+
+    $scope.$watch('multiselectModel2', function () {
+
+        console.log($scope.multiselectModel2);
+
+        $scope.courseStudentIdArr = [];
+        for (var i = 0; i < $scope.multiselectModel2.length; i++) {
+            $scope.courseStudentIdArr.push($scope.multiselectModel2[i].id);
+            console.log($scope.courseStudentIdArr);
+        }
+
+        // getDataStudentTeacher._get($rootScope.role, $scope.courseStudentIdArr)
+        //     .then(function onsuccess(response) {
+        //         console.log(response.data);  
+        //         //  __$scopecourseArr = response.data.course;
+        //         //  $scopVar.$apply();
+        //         // return response.data;
+        //         $scope.setData1(response.data);
+
+        //     });
+
+        // $scope.setData1 = function (studentCourse) {
+        //     console.log(studentCourse);
+        //     $scope.studentArr = studentCourse.data.title;
+        //     console.log($scope.studentArr);
+        // }
+
+    }, true);
+    //  console.log("$scope.courseIdArr", $scope.courseIdArr);
 
 }]);

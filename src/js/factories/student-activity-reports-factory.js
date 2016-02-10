@@ -21,7 +21,7 @@ factoryModule.factory('validateUrlData', function($http, $rootScope) {
 });
 
 
-factoryModule.factory('getData', function($http) {
+factoryModule.factory('getDataStudent', function($http) {
 
     var basePath = 'http://172.16.9.197:8282/gage-service/service/course?';
 
@@ -34,6 +34,18 @@ factoryModule.factory('getData', function($http) {
     };
 });
 
+factoryModule.factory('getStudentCourseData', function($http) {
+
+    var basePath = 'http://172.16.9.197:8282/gage-service/service/course?role=student&userids=';
+
+    return {
+        _get: function(userid) {
+            console.log("*******************************************");
+          //  console.log(role,userid);
+             return $http.get(basePath +userid);        
+        }
+    };
+});
 
 factoryModule.factory('getEnrollmentStatus', function($http) {
 
