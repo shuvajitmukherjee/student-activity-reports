@@ -16,15 +16,17 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
 
 
     $rootScope.userid = $routeParams.userid;
+    $rootScope.token = $routeParams.token;
     $rootScope.role = $routeParams.role;
-    console.log($rootScope.role, $rootScope.userid);
+    console.log($rootScope.role, $rootScope.userid,$routeParams.token);
     console.log("*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 
-    validateUrlData._get($routeParams.role, $routeParams.userid)
+    validateUrlData._get($routeParams.role, $routeParams.userid,$routeParams.token)
         .then(function onsuccess(response) {
             console.log(response.data);
 
             $scope.showTiles(response.data);
+        $rootScope.showoverlay = false;
 
         }, function onError(errResponse) {
             console.log("err Response ", errResponse);
@@ -49,6 +51,8 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
             $scope.progressReport = true;
             $scope.courseCompletionReport = true;
             $scope.studentActivityReport = true;
+            
+            $rootScope.admindetail = authResponse;
 
         }
     }

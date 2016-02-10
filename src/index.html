@@ -28,7 +28,7 @@
 
     </head>
     <body ng-class="{'sky-blue': (isblue)}">
-
+        <div id='overLay' class='overlayDiv' ng-show='showoverlay'></div>
         <!-- Add your site or application content here -->
         <!-- <div class="header">
             <div class="navbar navbar-default" role="navigation">
@@ -93,11 +93,13 @@
         <!-- Services -->
         <script src="js/factories/student-activity-reports-factory.js" type="text/javascript"></script>
         <script src="js/factories/student-activity-reports-teacher.js" type="text/javascript"></script>
+        <script src="js/factories/student-activity-reports-admin.js" type="text/javascript"></script>
         <!-- End Services -->
         <!-- Controllers -->
         <script src="js/controllers/main-ctrl.js" type="text/javascript"></script>
         <script src="js/controllers/student-activity-reports.js" type="text/javascript"></script>
         <script src="js/controllers/teacher_ctrl.js" type="text/javascript"></script>
+        <script src="js/controllers/admin_ctrl.js" type="text/javascript"></script>
         <!-- End Controllers -->
         <!-- Main Entry FIle (Should be loaded after loading all module dependencies) -->
         <script src="js/app/app.js" type="text/javascript"></script>

@@ -10,17 +10,27 @@
                 <p>School(s)</p>
             </div>
             <div class="col-md-6">
-                <select class="form-control">
+                <!--<select class="form-control">
                     <option selected>All</option>
                     <option>Weber School District [weber-isd]</option>
                     <option>Weber Innovations High School [weber-wic]</option>
-                </select>
+                </select>-->
+                <!-- <select ng-model="schoolList" ng-options="schoolListDoamin.name for schoolListDoamin in schoolList">                   </select>-->
                 <!--<multiselect
                   ng-model="multiselectModel"
                   options="c.title for c in courseArr"
                   data-multiple="true"
                   data-checkall="All Courses">
               </multiselect>-->
+                
+                <multiselect
+                  ng-model="multiselectModelAdminCourse"
+                  options="schoolListDoamin.name for schoolListDoamin in schoolList"
+                  data-multiple="true"
+                  data-checkall="All Courses">
+              </multiselect>
+                
+          
             </div>
         </div>
         <div class="row form-group">

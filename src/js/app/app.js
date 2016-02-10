@@ -13,7 +13,9 @@ var app = angular.module('studentActivityReports', [
     'studentActivityReportsTeacher.factories',
     'studentActivityReports.home',
     'studentActivityReports.studentDetails',
-    'teacherActivityReports.teacherDetails'
+    'teacherActivityReports.teacherDetails',
+    'studentActivityReports.adminDetails',
+    'studentActivityReportsAdmin.factories'
 ]);
 
 app.config([

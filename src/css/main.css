@@ -129,3 +129,11 @@ multiselect .btn-group ul {
         margin: 25px 0 0 0;
     }
 }
+#overLay{
+    height: 1000px;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 10;
+}

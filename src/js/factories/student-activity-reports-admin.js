@@ -1,6 +1,28 @@
 'use strict'
 var factoryModule = angular.module('studentActivityReportsAdmin.factories', []);
 
+
+
+factoryModule.factory('getSchoolData', function($http) {
+
+http://172.16.9.197:8282/gage-service/service/domain/list/45685236?token=~SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB
+    var basePath = "http://172.16.9.197:8282/gage-service/service/domain/list/"
+    
+    return {
+        _get: function(userid,__token) {
+            console.log("*******************************************");
+            console.log(userid);
+            var token = "SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB";
+            var __url = basePath +userid+'?token='+__token;
+            console.log(__url);
+            return $http.get(__url);
+             
+        }
+    };
+});
+
+
+
 factoryModule.factory('getData', function($http) {
 
     var basePath = '/src/js/data/';

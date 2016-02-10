@@ -47,7 +47,7 @@ routingModule.provider('routeInfo', function() {
                 {
                     route: '/admin-form',
                     templateUrl: 'js/partials/admin-form.html',
-                    controller: 'studentDetailsCtrl'
+                    controller: 'adminctrl'
                 }
             ];
         },

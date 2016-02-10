@@ -1,19 +1,19 @@
 'use strict'
 var factoryModule = angular.module('studentActivityReports.factories', []);
 
-factoryModule.factory('validateUrlData', function($http) {
+factoryModule.factory('validateUrlData', function($http, $rootScope) {
 
 
     var basePath = "http://172.16.9.197:8282/gage-service/service/user/rights/"
     //45685775?roletype=teacher&entitytype=D|C&token=~SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB"
     return {
-        _get: function(role,userid,__$scopecourseArr) {
-            console.log("*******************************************");
+        _get: function(role,userid,__token) {
+            console.log("*******************************************",__token);
             console.log(role,userid);
-            var token = "SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB";
+//            var token = "SKq1BAAAAAALtEkMQ0pw5A.4h2waVknunsG6_6pOweqSB";
             var entitytype = 'D|C';
-         
-            var __url = basePath +userid+'?roletype='+role+'&entitytype='+entitytype+'&token=~'+token;
+            $rootScope.showoverlay = true;
+            var __url = basePath +userid+'?roletype='+role+'&entitytype='+entitytype+'&token='+__token;
             console.log(__url);
             return $http.get(__url);
              
