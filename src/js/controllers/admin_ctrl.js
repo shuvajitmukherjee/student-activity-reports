@@ -148,6 +148,16 @@ console.log("$routeParams.userId  ",$rootScope.admindetail);
     
     $scope.submit=function(){
         
+       console.log(new Date($scope.startDateStartActivity));
+        var startDateActivity = new Date($scope.startDateStartActivity);
+        var endDateActivity = new Date($scope.startDateEndActivity);
+        if (startDateActivity > endDateActivity) {
+            alert("Activity end date must be greater then activity start date")
+        }
+        else{
+            alert("Valid Date");
+        }
+        
     };
 
     // Success callback
