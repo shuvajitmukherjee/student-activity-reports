@@ -34,13 +34,19 @@ console.log("$routeParams.userId  ",$rootScope.admindetail);
     * @startDate: holds the start date.
     * Acceptable date formats: mm-dd-yyyy, mm-dd-yy, ISO formatated string, miliseconds
     */
-    $scope.startDate = "04-02-2016";
+    var currDate = new Date();
+    //var Date = new Date();
+    $scope.startDateStartActivity =currDate.setDate(currDate.getDate()-7);
+    $scope.maxDateStartActivity=new Date().setDate(new Date().getDate()-1);
+   // console.log( $scope.maxDate);
+    $scope.startDateEndActivity= new Date();
+    
 
     /*
     * @endDate: holds the start date.
     * Acceptable date formats: mm-dd-yyyy, mm-dd-yy, ISO formatated string, miliseconds
     */
-    $scope.endDate = "04-02-2016";
+    $scope.endDate = "14-02-2016";
 
     $scope.getAllSchollDomainId = function(dataresopnse){
         $scope.allSchoolIdArrays =[];

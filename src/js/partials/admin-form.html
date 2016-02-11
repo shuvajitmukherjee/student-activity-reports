@@ -93,7 +93,7 @@
             </div>
             <div class="col-md-4">
                 <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                    <input type="text" class="form-control cal-icon" ng-model="startDate" name="date" bs-datepicker>
+                    <input type="text" class="form-control cal-icon" ng-model="startDateStartActivity" data-max-date={{maxDateStartActivity}} name="date" bs-datepicker>
                     <!--<input class="form-control" type="text"  />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
                 </div>
@@ -106,7 +106,7 @@
             </div>
             <div class="col-md-4">
                 <div id="datepicker2" class="input-group date" data-date-format="mm-dd-yyyy">
-                    <input type="text" class="form-control cal-icon" ng-model="startDate" name="date" bs-datepicker>
+                    <input type="text" class="form-control cal-icon" ng-model="startDateEndActivity" name="date" bs-datepicker>
                     <!--<input class="form-control" type="text" />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
                 </div>
@@ -136,7 +136,7 @@
                         </select>
                     </div>
                     <div class="col-xs-6">
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="number" min="0" value="0">
                     </div>
                 </div>
             </div>
