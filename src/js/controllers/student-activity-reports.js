@@ -69,34 +69,19 @@ sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope','$routeParams
                   console.log($scope.courseArr);
               } 
     
-    // xyz = $scope.studentCourse;
-   // console.log($scope.studentCourse.value.data);
-  
-  //  console.log($scope.courseArr);
-    // $scope.courseArr = [
-    //     {
-    //         id: 0,
-    //         name: "Grade 2 Language Arts"
-    //     },
-    //     {
-    //         id: 1,
-    //         name: "Grade 5 Mathematics"
-    //     },
-    //     {
-    //         id: 2,
-    //         name: "Grade 10 Integrated Math"
-    //     },
-    //     {
-    //         id: 3,
-    //         name: "SINET: Biology A (Flex)"
-    //     }
-    // ];
 
-    /*
-    * @enrollmentArr: Enrollment array
-    */
     
-    $scope.submit=function(){
+    $scope.submitStudentInfo=function(){
+        
+       console.log(new Date($scope.startDateStartActivity));
+        var startDateActivity = new Date($scope.startDateStartActivity);
+        var endDateActivity = new Date($scope.startDateEndActivity);
+        if (startDateActivity > endDateActivity) {
+            alert("Activity end date must be greater then activity start date")
+        }
+        else{
+            alert("Valid Date");
+        }
         
     };
 

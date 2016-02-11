@@ -73,6 +73,7 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
         console.log(authResponse);
     }
 
+
     $scope.role = 'teacher';
     $rootScope.role = 'teacher';
     $scope.showTiles('sjkdfhjks');
