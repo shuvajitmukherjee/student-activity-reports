@@ -85,7 +85,7 @@
                     <option>Suspended</option>
                     <option>Inactive</option>
                 </select>-->
-                <multiselect ng-model="multiselectModel" options="c.name for c in enrollmentArr" data-multiple="true" data-checkall="All">
+                <multiselect ng-model="multiselectModelEnrollment" options="c.name for c in enrollmentArr" data-multiple="true" data-checkall="All">
                 </multiselect>
                 <span class="field-alert" ng-show='statusNotSelected'>please select atleast one status.</span>
             </div>
@@ -141,7 +141,7 @@
                         </select>
                     </div>
                     <div class="col-xs-6">
-                        <input class="form-control" type="number" min="0" value="0">
+                        <input class="form-control" type="number" min="0" value="0" ng-model="input">
                     </div>
                 </div>
                  <span class="field-alert floatRight" ng-show='minimumMinut'>please input positive whole number.</span>

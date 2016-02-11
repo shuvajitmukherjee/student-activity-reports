@@ -299,6 +299,7 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
                     }
                     for (var i = 0; i < model.length; i++) {
                         var local = {};
+                        var value=[];
                         local[parsedResult.itemName] = model[i];
                         scope.items.push({
                             label: parsedResult.viewMapper(local),
@@ -312,6 +313,7 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
                         // scope.checkAll();
                         // scope.select(scope.items[0]);
                         selectSingle(scope.items[0]);
+                        setModelValue(true);
                     }else{
                         scope.checkAll();
                     }
