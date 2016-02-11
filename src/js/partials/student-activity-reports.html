@@ -44,7 +44,7 @@
           <div class="col-md-4">
               <div id="datepicker" class="input-group date " data-date-format="mm-dd-yyyy">
 
-                  <input type="text" class="form-control cal-icon" ng-model="startDate" name="date" bs-datepicker>
+                  <input type="text" class="form-control cal-icon" ng-model="startDateStartActivity" data-max-date={{maxDateStartActivity}} name="date" bs-datepicker>
                    <!--<input class="form-control" type="text"  />-->
                   <!--<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
               </div>
@@ -60,7 +60,7 @@
               <div id="datepicker2" class="input-group date" data-date-format="mm-dd-yyyy">
                   <!-- <input class="form-control" type="text"  /> -->
 
-                  <input type="text" class="form-control cal-icon" ng-model="endDate" name="date" bs-datepicker>
+                  <input type="text" class="form-control cal-icon" ng-model="startDateEndActivity" name="date" bs-datepicker>
                   <!--<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
               </div>
               <span class="field-alert" ng-show='endDateNotSelected'>Please select.</span>
@@ -86,7 +86,7 @@
 
       <div class="row form-submit">
           <div class="col-md-12">
-               <button type="submit" class="btn pull-right" ng-click="submit()">OK</button>
+               <button type="submit" class="btn pull-right" ng-click="submitStudentInfo()">OK</button>
                <button type="submit" class="btn pull-right disabled">Cancel</button>
           </div>
       </div>
