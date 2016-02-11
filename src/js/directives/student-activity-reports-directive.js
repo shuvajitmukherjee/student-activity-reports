@@ -183,7 +183,7 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
 
                     } else {
                         scope.noOfChkedItem = document.getElementsByClassName('glyphicon-ok').length + 1;
-                        // console.log(scope.noOfChkedItem);
+                        console.log(scope.noOfChkedItem);
                         if (scope.noOfChkedItem === scope.items.length) {
                             scope.allChecked = true;
                         }
@@ -203,7 +203,7 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
                                 value.push(item.model);
                                 console.log(value);
                                 // console.log(value);
-                                // console.log(value.length);
+                                console.log(value.length);
                                 
                             }
                         });
@@ -287,7 +287,6 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
                     } else {
                         event.stopPropagation();
                         selectMultiple(item);
-
                     }
                     // alert();
                 };

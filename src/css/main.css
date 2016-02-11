@@ -140,3 +140,11 @@ multiselect .btn-group ul {
         cursor: not-allowed !important;
      opacity: .5;
 }
+
+.cal-icon{
+    background: url(../img/calender-icon.jpg) no-repeat center right;
+    border-radius: 4px !important;
+}
+#datepicker, #datepicker2{
+    width:100%;
+}

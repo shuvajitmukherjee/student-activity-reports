@@ -22,15 +22,12 @@
                   data-multiple="true"
                   data-checkall="All Courses">
               </multiselect>-->
-                
-                <multiselect
-                  ng-model="multiselectModelAdminCourse"
-                  options="schoolListDoamin.name for schoolListDoamin in schoolList"
-                  data-multiple="true"
-                  data-checkall="All Courses">
-              </multiselect>
-                
-          
+
+                <multiselect ng-model="multiselectModelAdminCourse" options="schoolListDoamin.name for schoolListDoamin in schoolList" data-multiple="true"
+                data-checkall="All Courses">
+                </multiselect>
+
+
             </div>
         </div>
         <div class="row form-group">
@@ -38,20 +35,17 @@
                 <p>Student(s)</p>
             </div>
             <div class="col-md-6">
-               <!-- <select class="form-control">
+                <!-- <select class="form-control">
                     <option selected>All Students</option>
                     <option>Janet Young</option>
                     <option>Katie Lopez</option>
                     <option>Luke Mikelson</option>
                     <option>Megan Ronaldo</option>
                 </select>-->
-                
-                 <multiselect
-                  ng-model="multiselectModelAdminStudent"
-                  options="schoolStuds.title for schoolStuds in schoolStudentList"
-                  data-multiple="true"
-                  data-checkall="All Courses">
-              </multiselect>
+
+                <multiselect ng-model="multiselectModelAdminStudent" options="schoolStuds.title for schoolStuds in schoolStudentList" data-multiple="true"
+                data-checkall="All Courses">
+                </multiselect>
             </div>
         </div>
         <div class="row form-group">
@@ -59,20 +53,17 @@
                 <p>Course(s):</p>
             </div>
             <div class="col-md-6">
-               <!-- <select class="form-control">
+                <!-- <select class="form-control">
                     <option selected>All Courses</option>
                     <option>Grade 2 Language Arts</option>
                     <option>Grade 5 Mathematics</option>
                     <option>Grade 10 Integrated Math</option>
                     <option>SINET: Biology A (Flex)</option>
                 </select>-->
-                
-                <multiselect
-                  ng-model="multiselectModelAdminStudentCourse"
-                  options="schoolStudsCourse.title for schoolStudsCourse in schoolStudentCourseList"
-                  data-multiple="true"
-                  data-checkall="All Courses">
-              </multiselect>
+
+                <multiselect ng-model="multiselectModelAdminStudentCourse" options="schoolStudsCourse.title for schoolStudsCourse in schoolStudentCourseList"
+                data-multiple="true" data-checkall="All Courses">
+                </multiselect>
             </div>
         </div>
 
@@ -82,7 +73,7 @@
             </div>
             <div class="col-md-6">
                 <select class="form-control">
-                    <option >All</option>
+                    <option>All</option>
                     <option selected>Active</option>
                     <option>Withdrawn</option>
                     <option>WithdrawnFailed</option>
@@ -98,10 +89,11 @@
             <div class="col-md-2">
                 <p>Activity Start Date:</p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text"  />
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="text" class="form-control cal-icon" ng-model="startDate" name="date" bs-datepicker>
+                    <!--<input class="form-control" type="text"  />
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
                 </div>
             </div>
         </div>
@@ -110,10 +102,11 @@
             <div class="col-md-2">
                 <p>Activity End Date:</p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div id="datepicker2" class="input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text"  />
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="text" class="form-control cal-icon" ng-model="startDate" name="date" bs-datepicker>
+                    <!--<input class="form-control" type="text" />
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
                 </div>
             </div>
         </div>
