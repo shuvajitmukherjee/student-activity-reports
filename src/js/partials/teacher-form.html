@@ -19,7 +19,7 @@
                 </select>-->
                 <multiselect ng-model="multiselectModel" options="c.title for c in courseArr" data-multiple="true" data-checkall="All Courses">
                 </multiselect>
-
+<span class="field-alert" ng-show='courseNotSelected'>please select atleast one course.</span>
                 <!--<multiselect
                   ng-model="multiselectModel2"
                   options="c.title for c in studentArr"
@@ -42,6 +42,7 @@
                 </select>-->
                 <multiselect ng-model="multiselectModel2" options="c.title for c in studentArr" data-multiple="true" data-checkall="All Students">
                 </multiselect>
+                <span class="field-alert" ng-show='studentNotSelected'>please select atleast one student.</span>
             </div>
         </div>
         <div class="row form-group">
@@ -62,6 +63,7 @@
                 </select>-->
                 <multiselect ng-model="multiselectModel3" options="c.name for c in enrollmentArr" data-multiple="true" data-checkall="All">
                 </multiselect>
+                <span class="field-alert" ng-show='statusNotSelected'>please select atleast one status.</span>  
             </div>
         </div>
         <div class="row form-group">
@@ -87,6 +89,7 @@
                     <!--<input class="form-control" type="text"  />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
                 </div>
+                <span class="field-alert" ng-show='endDateNotgreater'>please select activity end date after start date.</span>
             </div>
         </div>
         
@@ -107,7 +110,9 @@
                         	<input class="form-control" type="number" min='0' value='0'>
                         </div>
                     </div>
+                     
                 </div>
+           
             </div>
 
 

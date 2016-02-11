@@ -201,9 +201,9 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
                         angular.forEach(scope.items, function (item) {
                             if (item.checked) {                               
                                 value.push(item.model);
-                                console.log(value);
+                                //console.log(value);
                                 // console.log(value);
-                                console.log(value.length);
+                                //console.log(value.length);
                                 
                             }
                         });

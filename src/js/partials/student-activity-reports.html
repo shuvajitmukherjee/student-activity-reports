@@ -31,7 +31,7 @@
                   ng-model="multiselectModel2"
                   options="c.name for c in enrollmentArr"
                   data-multiple="true"
-                  data-checkall="Active">
+                  data-checkall="All">
               </multiselect>
 
               <span class="field-alert" ng-show='enrllNotSelected'>please select Enrollment Status.</span>
@@ -48,7 +48,7 @@
                    <!--<input class="form-control" type="text"  />-->
                   <!--<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
               </div>
-              <span class="field-alert" ng-show='srtDateNotSelected'>Please select.</span>
+<!--              <span class="field-alert" ng-show='srtDateNotSelected'>Please select.</span>-->
           </div>
       </div>
 
@@ -63,7 +63,7 @@
                   <input type="text" class="form-control cal-icon" ng-model="startDateEndActivity" name="date" bs-datepicker>
                   <!--<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
               </div>
-              <span class="field-alert" ng-show='endDateNotSelected'>Please select.</span>
+              <span class="field-alert" ng-show='endDateNotSelected'>Please select activity end date after start date.</span>
           </div>
       </div>
 

@@ -11,10 +11,12 @@ admModule.controller('adminctrl', ['$scope', '$rootScope','$routeParams', 'getSc
     $scope.userId = $routeParams.userid;
     $scope.details = {};
     $rootScope.isblue = false;
-    $scope.courseNotSelected=false;
-    $scope.enrllNotSelected=false;
-    $scope.srtDateNotSelected=false;
-    $scope.endDateNotSelected=false;
+    $scope.statusNotSelected = false;
+    $scope.courseNotSelected = false;
+    $scope.studentNotSelected = false;
+    $scope.schoolNotSelected = false;
+    $scope.endDateNotgreater = false;
+    $scope.minimumMinut= false;
     $scope.schoolListIds =[];
     $scope.multiselectModelAdminSchool =[];
 //    $scope.allSchoolId =[];
@@ -30,6 +32,8 @@ admModule.controller('adminctrl', ['$scope', '$rootScope','$routeParams', 'getSc
 console.log("$scope.userId  ",$scope.userId );
 console.log("$routeParams.userId  ",$rootScope.admindetail);
 ///console.log("$scope.userId  ",$scope.userId );
+    
+    
     /*
     * @startDate: holds the start date.
     * Acceptable date formats: mm-dd-yyyy, mm-dd-yy, ISO formatated string, miliseconds
@@ -152,12 +156,38 @@ console.log("$routeParams.userId  ",$rootScope.admindetail);
         var startDateActivity = new Date($scope.startDateStartActivity);
         var endDateActivity = new Date($scope.startDateEndActivity);
         if (startDateActivity > endDateActivity) {
-            alert("Activity end date must be greater then activity start date")
+            $scope.endDateNotgreater = true
         }
         else{
-            alert("Valid Date");
+            $scope.endDateNotgreater = false;
+        }
+    
+        
+      
+  //TODO for Status select option  $scope.statusNotSelected = true;
+  
+        if($scope.schoolListIds.length === 0){
+            $scope.schoolNotSelected = true;
+        }else{
+             $scope.schoolNotSelected = false;
+        }
+        if( $scope.studentListIds.length === 0){
+           $scope.studentNotSelected = true;
+        }else{
+             $scope.studentNotSelected = false;
         }
         
+        if( $scope.studentCourseListIds.length === 0){
+           $scope.courseNotSelected = true;
+        }else{
+             $scope.courseNotSelected = false;
+        }
+        
+        if( $scope.studentCourseListIds.length === 0){
+           $scope.courseNotSelected = true;
+        }else{
+             $scope.courseNotSelected = false;
+        }
     };
 
     // Success callback

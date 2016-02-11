@@ -77,11 +77,13 @@ sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope','$routeParams
         var startDateActivity = new Date($scope.startDateStartActivity);
         var endDateActivity = new Date($scope.startDateEndActivity);
         if (startDateActivity > endDateActivity) {
-            alert("Activity end date must be greater then activity start date")
+            $scope.endDateNotSelected = true
         }
         else{
-            alert("Valid Date");
+            $scope.endDateNotSelected = false;
         }
+        
+        
         
     };
 

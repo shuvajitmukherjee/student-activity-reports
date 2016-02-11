@@ -13,10 +13,16 @@ function ($scope, $rootScope, $routeParams, getDataCourseTeacher, getEnrollmentS
     $scope.details = {};
     console.log("a");
     $rootScope.isblue = false;
+//    $scope.courseNotSelected = false;
+//    $scope.enrllNotSelected = false;
+//    $scope.srtDateNotSelected = false;
+//    $scope.endDateNotSelected = false;
+    
+    $scope.statusNotSelected = false;
     $scope.courseNotSelected = false;
-    $scope.enrllNotSelected = false;
-    $scope.srtDateNotSelected = false;
-    $scope.endDateNotSelected = false;
+    $scope.studentNotSelected = false;
+    $scope.endDateNotgreater = false;
+    
     $scope.multiselectModel = [];
     $scope.courseIdArr = [];
 
@@ -109,15 +115,29 @@ function ($scope, $rootScope, $routeParams, getDataCourseTeacher, getEnrollmentS
     */
 
     $scope.submit=function(){
-        alert("Submit");
        console.log(new Date($scope.startDateStartActivity));
         var startDateActivity = new Date($scope.startDateStartActivity);
         var endDateActivity = new Date($scope.startDateEndActivity);
         if (startDateActivity > endDateActivity) {
-            alert("Activity end date must be greater then activity start date")
+            $scope.endDateNotgreater = true
         }
         else{
-            alert("Valid Date");
+            $scope.endDateNotgreater = false;
+        }
+    
+        
+      
+  //TODO for Status select option  $scope.statusNotSelected = true;
+  
+       if( $scope.courseIdArr.length === 0){
+           $scope.courseNotSelected = true;
+        }else{
+             $scope.courseNotSelected = false;
+        }
+        if( $scope.courseStudentIdArr.length === 0){
+           $scope.studentNotSelected = true;
+        }else{
+             $scope.studentNotSelected = false;
         }
         
     };

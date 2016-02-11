@@ -26,7 +26,7 @@
                 <multiselect ng-model="multiselectModelAdminCourse" options="schoolListDoamin.name for schoolListDoamin in schoolList" data-multiple="true"
                 data-checkall="All Courses">
                 </multiselect>
-
+<span class="field-alert" ng-show='schoolNotSelected'>please select atleast one school.</span>
 
             </div>
         </div>
@@ -46,6 +46,7 @@
                 <multiselect ng-model="multiselectModelAdminStudent" options="schoolStuds.title for schoolStuds in schoolStudentList" data-multiple="true"
                 data-checkall="All Courses">
                 </multiselect>
+                <span class="field-alert" ng-show='studentNotSelected'>please select atleast one student.</span>
             </div>
         </div>
         <div class="row form-group">
@@ -64,6 +65,7 @@
                 <multiselect ng-model="multiselectModelAdminStudentCourse" options="schoolStudsCourse.title for schoolStudsCourse in schoolStudentCourseList"
                 data-multiple="true" data-checkall="All Courses">
                 </multiselect>
+                <span class="field-alert" ng-show='courseNotSelected'>please select atleast one course.</span>
             </div>
         </div>
 
@@ -85,6 +87,7 @@
                 </select>-->
                 <multiselect ng-model="multiselectModel" options="c.name for c in enrollmentArr" data-multiple="true" data-checkall="All">
                 </multiselect>
+                <span class="field-alert" ng-show='statusNotSelected'>please select atleast one status.</span>
             </div>
         </div>
         <div class="row form-group">
@@ -110,7 +113,9 @@
                     <!--<input class="form-control" type="text" />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>-->
                 </div>
+                <span class="field-alert" ng-show='endDateNotgreater'>please select activity end date after start date.</span>
             </div>
+            
         </div>
 
         <!--<div class="row form-group">
@@ -139,6 +144,7 @@
                         <input class="form-control" type="number" min="0" value="0">
                     </div>
                 </div>
+                 <span class="field-alert floatRight" ng-show='minimumMinut'>please input positive whole number.</span>
             </div>
         </div>
 
