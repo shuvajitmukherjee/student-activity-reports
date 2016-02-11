@@ -72,7 +72,7 @@
                 <p>Enrollment Status:</p>
             </div>
             <div class="col-md-6">
-                <select class="form-control">
+                <!--<select class="form-control">
                     <option>All</option>
                     <option selected>Active</option>
                     <option>Withdrawn</option>
@@ -82,10 +82,12 @@
                     <option>CompletedNoCredit</option>
                     <option>Suspended</option>
                     <option>Inactive</option>
-                </select>
+                </select>-->
+                <multiselect ng-model="multiselectModel" options="c.name for c in enrollmentArr" data-multiple="true" data-checkall="All">
+                </multiselect>
             </div>
         </div>
-         <div class="row form-group">
+        <div class="row form-group">
             <div class="col-md-2">
                 <p>Activity Start Date:</p>
             </div>
@@ -119,26 +121,26 @@
                 <input type="text" class="form-control">
             </div>
         </div>-->
-        
+
         <div class="row form-group">
-            	<div class="col-md-2">
-                	<p>Minimum number of minutes in activity</p>
-                </div>
-                <div class="col-md-6">
-                	<div class="row">
-                    	<div class="col-xs-6">
-                        	<select class="form-control">
-                                <option selected="">Select</option>
-                                <option>&lt; =</option>
-                                <option>&gt; =</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-6">
-                        	<input class="form-control" type="text">
-                        </div>
+            <div class="col-md-2">
+                <p>Minimum number of minutes in activity</p>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <select class="form-control">
+                            <option selected="">Select</option>
+                            <option>&lt; =</option>
+                            <option>&gt; =</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" type="text">
                     </div>
                 </div>
             </div>
+        </div>
 
         <div class="row form-submit">
             <div class="col-md-12">
@@ -148,4 +150,3 @@
         </div>
     </div>
 </div>
-
