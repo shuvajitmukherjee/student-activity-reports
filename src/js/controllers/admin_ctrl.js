@@ -1,6 +1,8 @@
 'use strict'
 var admModule = angular.module('studentActivityReports.adminDetails', []);
-admModule.controller('adminctrl', ['$scope', '$rootScope','$routeParams', 'getSchoolData', 'getSchoolStudent','getEnrollmentStatus','getSchoolStudentCourse', function($scope, $rootScope, $routeParams, getSchoolData,getSchoolStudent, getEnrollmentStatus,getSchoolStudentCourse) {
+admModule.controller('adminctrl', ['$scope', '$rootScope','$routeParams', 'getSchoolData', 
+'getSchoolStudent','getEnrollmentStatus','getSchoolStudentCourse', function($scope, $rootScope, $routeParams,
+ getSchoolData,getSchoolStudent, getEnrollmentStatus,getSchoolStudentCourse) {
 
     console.dir("**Inside Admin Ctrl**");
     
@@ -63,34 +65,34 @@ console.log("$routeParams.userId  ",$rootScope.admindetail);
     */
     
     $scope.enrollmentArr = getEnrollmentStatus.get();
-    console.log("2378459023478927842748923749273423894792384798237498347923784___________"+$rootScope.admindetail.data.user.domainid);
+    // console.log("2378459023478927842748923749273423894792384798237498347923784___________"+$rootScope.admindetail.data.user.domainid);
     
-     getSchoolData._get($rootScope.admindetail.data.user.domainid,$rootScope.token)
-    .then(function onsuccess(response){
-                console.log(response.data);  
-                $scope.setData(response.data); 
-                $scope.getAllSchollDomainId(response.data);
-                getSchoolStudent._get($scope.allSchoolIdArrays)
-                .then(function onSuccess(res){
-                    console.log("response of _getschool Data  ",res);
+    //  getSchoolData._get($rootScope.admindetail.data.user.domainid,$rootScope.token)
+    // .then(function onsuccess(response){
+    //             console.log(response.data);  
+    //             $scope.setData(response.data); 
+    //             $scope.getAllSchollDomainId(response.data);
+    //             getSchoolStudent._get($scope.allSchoolIdArrays)
+    //             .then(function onSuccess(res){
+    //                 console.log("response of _getschool Data  ",res);
                     
-                   $scope.setDataoFStuds(res.data.data.user);
-                    $scope.getAllSchollStudentCourseId(res.data.data.user);
+    //                $scope.setDataoFStuds(res.data.data.user);
+    //                 $scope.getAllSchollStudentCourseId(res.data.data.user);
                     
-                    getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
-                    .then(function onSuccess(res){
-                        console.log("response of allSchoolStudentIdArrays Data  ",res);
-                        $scope.setDataoFSchoolStudsCourse(res.data.data.course);
-                    },function onError(res){
-                        console.log("response of allSchoolStudentIdArrays Data Error  ",res);
-                    });  
-                },function onError(res){
-                    console.log("response of _getschool Data Error  ",res);
-                });  
-            },function onerror(response){
-                console.log("Error has been occured");
-                console.log(response.data);
-        });
+    //                 getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
+    //                 .then(function onSuccess(res){
+    //                     console.log("response of allSchoolStudentIdArrays Data  ",res);
+    //                     $scope.setDataoFSchoolStudsCourse(res.data.data.course);
+    //                 },function onError(res){
+    //                     console.log("response of allSchoolStudentIdArrays Data Error  ",res);
+    //                 });  
+    //             },function onError(res){
+    //                 console.log("response of _getschool Data Error  ",res);
+    //             });  
+    //         },function onerror(response){
+    //             console.log("Error has been occured");
+    //             console.log(response.data);
+    //     });
              
     $scope.setData=function(studentCourse){
         console.log(studentCourse);

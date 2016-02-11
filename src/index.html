@@ -19,7 +19,7 @@
         <!-- Start Including CSS libraries -->
         
         <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/libs/datepicker.css" rel="stylesheet">
+        <!-- -->
         <!-- <link href="css/lib/bootstrap-datetimepicker.min.css" rel="stylesheet"> -->
         <!-- <link href="css/lib/datepicker.css" rel="stylesheet"> -->
         <!-- End Including CSS libraries -->
@@ -31,7 +31,10 @@
     </head>
     <body ng-class="{'sky-blue': (isblue)}">
         <div id='overLay' class='overlayDiv' ng-show='showoverlay'>
-            <h1>Loading....</h1>
+            <h1 id='loadingtextH1' ng-show="loadingText">Loading....</h1>
+            
+            <h2 id='onNetErrorH2'class='' ng-show="netErr">"Sorry, something went wrong. Please try again after sometime"</h2>
+            <h2 id='onServiceErrorH2'class='' ng-show="authenticationErr">"Sorry, you are not authorized to access the reports. Please contact the administrator"</h2>
         </div>
         <!-- Add your site or application content here -->
         <!-- <div class="header">

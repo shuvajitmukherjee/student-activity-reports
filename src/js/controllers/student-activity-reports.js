@@ -1,7 +1,8 @@
 'use strict'
 var xyz=null;
 var sarModule = angular.module('studentActivityReports.studentDetails', []);
-sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope','$routeParams', 'getDataStudent', 'getEnrollmentStatus','getStudentCourseData',
+sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope','$routeParams', 'getDataStudent', 
+'getEnrollmentStatus','getStudentCourseData',
  function($scope, $rootScope, $routeParams, getDataStudent, getEnrollmentStatus,getStudentCourseData) {
 
     console.dir("**Inside studentDetailsCtrl**");
