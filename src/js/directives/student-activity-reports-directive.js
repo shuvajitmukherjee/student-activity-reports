@@ -306,8 +306,13 @@ angular.module("ui.multiselect", ["multiselect.tpl.html"])
                             checked: false
                         });
                     }
-                    
-                    if(true) {
+                    console.log(scope.items[0].label);
+                    if(scope.items[0].label==='Active') {
+                        // alert(1);
+                        // scope.checkAll();
+                        // scope.select(scope.items[0]);
+                        selectSingle(scope.items[0]);
+                    }else{
                         scope.checkAll();
                     }
                 }
