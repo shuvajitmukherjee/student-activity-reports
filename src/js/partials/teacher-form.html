@@ -104,7 +104,8 @@
                             </select>
                         </div>
                         <div class="col-xs-6">
-                        	<input class="form-control" type="number" min='0' value='0'>
+                        	<input class="form-control" type="number" min='0' value='0' ng-model="input">
+                            <!--<span ng-show="!input.length">Please enter something!</span>-->
                         </div>
                     </div>
                 </div>
@@ -114,7 +115,7 @@
         <div class="row form-submit">
             <div class="col-md-12">
                 <button type="submit" class="btn pull-right">OK</button>
-                <button type="submit" class="btn pull-right disabled">Cancel</button>
+                <button type="submit" class="btn pull-right disabled">Cancel</button>   
             </div>
         </div>
     </div>

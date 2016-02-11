@@ -73,8 +73,8 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
         console.log(authResponse);
     }
 
-    $scope.role = 'student';
-    $rootScope.role = 'student';
+    $scope.role = 'teacher';
+    $rootScope.role = 'teacher';
     $scope.showTiles('sjkdfhjks');
 
     console.log('$routeParams', $routeParams);
