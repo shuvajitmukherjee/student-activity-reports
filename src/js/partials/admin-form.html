@@ -24,7 +24,7 @@
               </multiselect>-->
 
                 <multiselect ng-model="multiselectModelAdminCourse" options="schoolListDoamin.name for schoolListDoamin in schoolList" data-multiple="true"
-                data-checkall="All Courses">
+                data-checkall="All Schools">
                 </multiselect>
 <span class="field-alert" ng-show='schoolNotSelected'>please select atleast one school.</span>
 
@@ -44,7 +44,7 @@
                 </select>-->
 
                 <multiselect ng-model="multiselectModelAdminStudent" options="schoolStuds.title for schoolStuds in schoolStudentList" data-multiple="true"
-                data-checkall="All Courses">
+                data-checkall="All Students">
                 </multiselect>
                 <span class="field-alert" ng-show='studentNotSelected'>please select atleast one student.</span>
             </div>
