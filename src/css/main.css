@@ -130,12 +130,13 @@ multiselect .btn-group ul {
     }
 }
 #overLay{
-    height: 1000px;
+    height: 100%;
     width: 100%;
-    background-color: black;
-    opacity: 0.5;
+    background-color: rgba(0,0,0,0.5);
+/*    opacity: 0.5;*/
     position: absolute;
     z-index: 1000;
+  
 }.disabledCls{
         cursor: not-allowed !important;
      opacity: .5;
@@ -150,4 +151,13 @@ multiselect .btn-group ul {
 }
 .floatRight{
 /*    float: right;*/
+}
+.centerDiv{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -100px;
+    text-align: center;
+    height: 150px;
+    color: white;
 }

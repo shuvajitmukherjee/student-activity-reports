@@ -8,7 +8,7 @@ constantModule.constant('$theme', {
 var homeModule = angular.module('studentActivityReports.home', ['constant']);
 
 
-homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme', '$routeParams', 'validateUrlData', function ($scope, $rootScope, $location, theme, $routeParams, validateUrlData) {
+homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme', '$routeParams', 'validateUrlData','notAuthenticated','noNetError', function ($scope, $rootScope, $location, theme, $routeParams, validateUrlData,notAuthenticated,noNetError) {
 
     $scope.progressReport = false;
     $scope.courseCompletionReport = false;
@@ -30,18 +30,22 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
 
      validateUrlData._get($routeParams.role, $routeParams.userid, $routeParams.token)
          .then(function onsuccess(response) {
-             console.log($routeParams.token + " $routeParams.token")
-             console.log(response.data);
-
-             $scope.showTiles(response.data);
-             $rootScope.showoverlay = false;
-
+            console.log($routeParams.token + " $routeParams.token")
+            console.log(response.data);
+            
+            if(response.data.messageType ==="ERROR"){
+                
+                notAuthenticated._showErrorMsg();
+                
+            }else{
+                $scope.showTiles(response.data);
+                $rootScope.showoverlay = false;
+            }
+                
          }, function onError(errResponse) {
              console.log("err Response ", errResponse);
+            noNetError._showNetErrorMsg();
              $scope.blockUser(errResponse)
-             $rootScope.showoverlay = true;
-             $rootScope.netErr = true;
-             $rootScope.loadingText = false;
          });
 
     $scope.showTiles = function (authResponse) {

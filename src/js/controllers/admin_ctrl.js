@@ -1,8 +1,8 @@
 'use strict'
 var admModule = angular.module('studentActivityReports.adminDetails', []);
 admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getSchoolData',
-    'getSchoolStudent', 'getEnrollmentStatus', 'getSchoolStudentCourse', function ($scope, $rootScope, $routeParams,
-        getSchoolData, getSchoolStudent, getEnrollmentStatus, getSchoolStudentCourse) {
+    'getSchoolStudent', 'getEnrollmentStatus', 'getSchoolStudentCourse','notAuthenticated','noNetError', function ($scope, $rootScope, $routeParams,
+        getSchoolData, getSchoolStudent, getEnrollmentStatus, getSchoolStudentCourse,notAuthenticated,noNetError) {
 
         console.dir("**Inside Admin Ctrl**");
     
@@ -82,27 +82,44 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
     
           getSchoolData._get($rootScope.admindetail.data.user.domainid,$rootScope.token)
          .then(function onsuccess(response){
+              
+                   if(response.data.messageType ==="ERROR"){
+                
+                        notAuthenticated._showErrorMsg();
+                       return;
+                
+                    }
                      console.log(response.data);  
                      $scope.setData(response.data); 
                      $scope.getAllSchollDomainId(response.data);
                      getSchoolStudent._get($scope.allSchoolIdArrays)
                      .then(function onSuccess(res){
                          console.log("response of _getschool Data  ",res);
+                         if(response.data.messageType ==="ERROR"){
+                                notAuthenticated._showErrorMsg();
+                                return;
+                        }
                     
                         $scope.setDataoFStuds(res.data.data.user);
-                         $scope.getAllSchollStudentCourseId(res.data.data.user);
-                    
-                         getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
+                        $scope.getAllSchollStudentCourseId(res.data.data.user);
+                        getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
                          .then(function onSuccess(res){
                              console.log("response of allSchoolStudentIdArrays Data  ",res);
-                             $scope.setDataoFSchoolStudsCourse(res.data.data.course);
+                             if(response.data.messageType ==="ERROR"){
+                                notAuthenticated._showErrorMsg();
+                                return;
+                            }
+                            $scope.setDataoFSchoolStudsCourse(res.data.data.course);
                          },function onError(res){
                              console.log("response of allSchoolStudentIdArrays Data Error  ",res);
+                            noNetError._showNetErrorMsg();
                          });  
                      },function onError(res){
                          console.log("response of _getschool Data Error  ",res);
+                         noNetError._showNetErrorMsg();
                      });  
                  },function onerror(response){
+                     noNetError._showNetErrorMsg();
                      console.log("Error has been occured");
                      console.log(response.data);
              });
@@ -136,6 +153,10 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
          getSchoolStudent._get($scope.schoolListIds)
                 .then(function onSuccess(res){
                     console.log("response of _getschool Data  ",res);
+                    if(response.data.messageType ==="ERROR"){
+                        notAuthenticated._showErrorMsg();
+                        return;
+                    }
                     
                    $scope.setDataoFStuds(res.data.data.user);
                     $scope.getAllSchollStudentCourseId(res.data.data.user);
@@ -143,12 +164,18 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
                     getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
                     .then(function onSuccess(res){
                         console.log("response of allSchoolStudentIdArrays Data  ",res);
+                        if(response.data.messageType ==="ERROR"){
+                            notAuthenticated._showErrorMsg();
+                            return;
+                        }
                         $scope.setDataoFSchoolStudsCourse(res.data.data.course);
                     },function onError(res){
                         console.log("response of allSchoolStudentIdArrays Data Error  ",res);
+                        noNetError._showNetErrorMsg();
                     });  
                 },function onError(res){
                     console.log("response of _getschool Data Error  ",res);
+                    noNetError._showNetErrorMsg();
                 });
         }
        $scope.OnChangeStudent=function(){
@@ -157,9 +184,14 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
                     getSchoolStudentCourse._get($scope.studentListIds)
                     .then(function onSuccess(res){
                         console.log("response of allSchoolStudentIdArrays Data  ",res);
+                        if(response.data.messageType ==="ERROR"){
+                            notAuthenticated._showErrorMsg();
+                            return;
+                        }
                         $scope.setDataoFSchoolStudsCourse(res.data.data.course);
                     },function onError(res){
                         console.log("response of allSchoolStudentIdArrays Data Error  ",res);
+                        noNetError._showNetErrorMsg();
                     });  
                
         }

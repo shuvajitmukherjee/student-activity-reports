@@ -47,6 +47,33 @@ factoryModule.factory('getStudentCourseData', function($http) {
     };
 });
 
+factoryModule.factory('notAuthenticated', function($rootScope) {
+
+   // var basePath = 'http://172.16.9.197:8282/gage-service/service/course?role=student&userids=';
+
+    return {
+        _showErrorMsg: function(){
+//                $rootScope.loadingText = true;
+                $rootScope.netErr = false;
+                $rootScope.authenticationErr = true;
+                $rootScope.loadingText = false;
+        }
+    };
+});
+factoryModule.factory('noNetError', function($rootScope) {
+
+   // var basePath = 'http://172.16.9.197:8282/gage-service/service/course?role=student&userids=';
+
+    return {
+        _showNetErrorMsg: function(){
+                $rootScope.netErr = true;
+                $rootScope.authenticationErr = false;
+                $rootScope.loadingText = false;
+        }
+    };
+});
+
+
 factoryModule.factory('getEnrollmentStatus', function($http) {
 
     var service = {};

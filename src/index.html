@@ -31,10 +31,11 @@
     </head>
     <body ng-class="{'sky-blue': (isblue)}">
         <div id='overLay' class='overlayDiv' ng-show='showoverlay'>
-            <h1 id='loadingtextH1' ng-show="loadingText">Loading....</h1>
+          <div class = 'centerDiv'>  <h1 id='loadingtextH1' ng-show="loadingText">Loading....</h1>
             
             <h2 id='onNetErrorH2'class='' ng-show="netErr">"Sorry, something went wrong. Please try again after sometime"</h2>
             <h2 id='onServiceErrorH2'class='' ng-show="authenticationErr">"Sorry, you are not authorized to access the reports. Please contact the administrator"</h2>
+            </div>
         </div>
         <!-- Add your site or application content here -->
         <!-- <div class="header">

@@ -2,8 +2,8 @@
 var xyz = null;
 var sarModule = angular.module('studentActivityReports.studentDetails', []);
 sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope', '$routeParams', 'getDataStudent',
-    'getEnrollmentStatus', 'getStudentCourseData',
-    function ($scope, $rootScope, $routeParams, getDataStudent, getEnrollmentStatus, getStudentCourseData) {
+    'getEnrollmentStatus', 'getStudentCourseData','notAuthenticated','noNetError',
+    function ($scope, $rootScope, $routeParams, getDataStudent, getEnrollmentStatus, getStudentCourseData,notAuthenticated,noNetError) {
 
         console.dir("**Inside studentDetailsCtrl**");
     
@@ -50,29 +50,22 @@ sarModule.controller('studentDetailsCtrl', ['$scope', '$rootScope', '$routeParam
         getDataStudent._get($rootScope.role, $rootScope.userid)
             .then(function onsuccess(response) {
                 console.log(response.data);
-
-                console.log("*********************************************")
                 $scope.setData(response.data);
-
-                getStudentCourseData._get($rootScope.userid)
-                    .then(function onsuccess(response) {
-                        console.log(response.data);
-
-                        console.log("*********************************************", response.data)
-                        //$scope.setData(response.data); 
-                    });
+                if(response.data.messageType ==="ERROR"){
+                    notAuthenticated._showErrorMsg();
+                    return;
+                }
 
             }, function onerr(res) {
-                console.log("Form Errrrrrrrrrrrrrr");
+                console.log("Form net Error");
+                notAuthenticated._showErrorMsg();
             });
 
         $scope.setData = function (studentCourse) {
             console.log(studentCourse);
             $scope.courseArr = studentCourse.data.course;
 
-            console.log($scope.courseArr);
         }
-
 
 
         $scope.submitStudentInfo = function () {
