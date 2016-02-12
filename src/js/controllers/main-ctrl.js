@@ -28,21 +28,21 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
     
     
 
-    // validateUrlData._get($routeParams.role, $routeParams.userid, $routeParams.token)
-    //     .then(function onsuccess(response) {
-    //         console.log($routeParams.token + " $routeParams.token")
-    //         console.log(response.data);
+     validateUrlData._get($routeParams.role, $routeParams.userid, $routeParams.token)
+         .then(function onsuccess(response) {
+             console.log($routeParams.token + " $routeParams.token")
+             console.log(response.data);
 
-    //         $scope.showTiles(response.data);
-    //         $rootScope.showoverlay = false;
+             $scope.showTiles(response.data);
+             $rootScope.showoverlay = false;
 
-    //     }, function onError(errResponse) {
-    //         console.log("err Response ", errResponse);
-    //         $scope.blockUser(errResponse)
-    //         $rootScope.showoverlay = true;
-    //         $rootScope.netErr = true;
-    //         $rootScope.loadingText = false;
-    //     });
+         }, function onError(errResponse) {
+             console.log("err Response ", errResponse);
+             $scope.blockUser(errResponse)
+             $rootScope.showoverlay = true;
+             $rootScope.netErr = true;
+             $rootScope.loadingText = false;
+         });
 
     $scope.showTiles = function (authResponse) {
         console.log(authResponse);
@@ -74,9 +74,9 @@ homeModule.controller('MainCtrl', ['$scope', '$rootScope', '$location', '$theme'
     }
 
 
-    $scope.role = 'admin';
-    $rootScope.role = 'admin';
-    $scope.showTiles('sjkdfhjks');
+//    $scope.role = 'admin';
+//    $rootScope.role = 'admin';
+//    $scope.showTiles('sjkdfhjks');
 
     console.log('$routeParams', $routeParams);
     console.log('role= ', $routeParams.role);

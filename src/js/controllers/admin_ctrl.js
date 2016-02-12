@@ -80,32 +80,32 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
         $scope.enrollmentArr = getEnrollmentStatus.get();
         // console.log("2378459023478927842748923749273423894792384798237498347923784___________"+$rootScope.admindetail.data.user.domainid);
     
-        //  getSchoolData._get($rootScope.admindetail.data.user.domainid,$rootScope.token)
-        // .then(function onsuccess(response){
-        //             console.log(response.data);  
-        //             $scope.setData(response.data); 
-        //             $scope.getAllSchollDomainId(response.data);
-        //             getSchoolStudent._get($scope.allSchoolIdArrays)
-        //             .then(function onSuccess(res){
-        //                 console.log("response of _getschool Data  ",res);
+          getSchoolData._get($rootScope.admindetail.data.user.domainid,$rootScope.token)
+         .then(function onsuccess(response){
+                     console.log(response.data);  
+                     $scope.setData(response.data); 
+                     $scope.getAllSchollDomainId(response.data);
+                     getSchoolStudent._get($scope.allSchoolIdArrays)
+                     .then(function onSuccess(res){
+                         console.log("response of _getschool Data  ",res);
                     
-        //                $scope.setDataoFStuds(res.data.data.user);
-        //                 $scope.getAllSchollStudentCourseId(res.data.data.user);
+                        $scope.setDataoFStuds(res.data.data.user);
+                         $scope.getAllSchollStudentCourseId(res.data.data.user);
                     
-        //                 getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
-        //                 .then(function onSuccess(res){
-        //                     console.log("response of allSchoolStudentIdArrays Data  ",res);
-        //                     $scope.setDataoFSchoolStudsCourse(res.data.data.course);
-        //                 },function onError(res){
-        //                     console.log("response of allSchoolStudentIdArrays Data Error  ",res);
-        //                 });  
-        //             },function onError(res){
-        //                 console.log("response of _getschool Data Error  ",res);
-        //             });  
-        //         },function onerror(response){
-        //             console.log("Error has been occured");
-        //             console.log(response.data);
-        //     });
+                         getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
+                         .then(function onSuccess(res){
+                             console.log("response of allSchoolStudentIdArrays Data  ",res);
+                             $scope.setDataoFSchoolStudsCourse(res.data.data.course);
+                         },function onError(res){
+                             console.log("response of allSchoolStudentIdArrays Data Error  ",res);
+                         });  
+                     },function onError(res){
+                         console.log("response of _getschool Data Error  ",res);
+                     });  
+                 },function onerror(response){
+                     console.log("Error has been occured");
+                     console.log(response.data);
+             });
              
         $scope.setData = function (studentCourse) {
             console.log(studentCourse);
@@ -126,32 +126,43 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
         } 
     
         
-        // xyz = $scope.studentCourse;
-        // console.log($scope.studentCourse.value.data);
-  
-        //  console.log($scope.courseArr);
-        // $scope.courseArr = [
-        //     {
-        //         id: 0,
-        //         name: "Grade 2 Language Arts"
-        //     },
-        //     {
-        //         id: 1,
-        //         name: "Grade 5 Mathematics"
-        //     },
-        //     {
-        //         id: 2,
-        //         name: "Grade 10 Integrated Math"
-        //     },
-        //     {
-        //         id: 3,
-        //         name: "SINET: Biology A (Flex)"
-        //     }
-        // ];
-
-        /*
-        * @enrollmentArr: Enrollment array
-        */
+       $scope.OnChangeSchools=function(){
+        if($scope.schoolListIds.length ===0){
+            var tempArr =[];
+             $scope.setDataoFStuds(tempArr);
+             $scope.setDataoFSchoolStudsCourse(tempArr);
+            return;
+        }
+         getSchoolStudent._get($scope.schoolListIds)
+                .then(function onSuccess(res){
+                    console.log("response of _getschool Data  ",res);
+                    
+                   $scope.setDataoFStuds(res.data.data.user);
+                    $scope.getAllSchollStudentCourseId(res.data.data.user);
+                    
+                    getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
+                    .then(function onSuccess(res){
+                        console.log("response of allSchoolStudentIdArrays Data  ",res);
+                        $scope.setDataoFSchoolStudsCourse(res.data.data.course);
+                    },function onError(res){
+                        console.log("response of allSchoolStudentIdArrays Data Error  ",res);
+                    });  
+                },function onError(res){
+                    console.log("response of _getschool Data Error  ",res);
+                });
+        }
+       $scope.OnChangeStudent=function(){
+        
+                    
+                    getSchoolStudentCourse._get($scope.studentListIds)
+                    .then(function onSuccess(res){
+                        console.log("response of allSchoolStudentIdArrays Data  ",res);
+                        $scope.setDataoFSchoolStudsCourse(res.data.data.course);
+                    },function onError(res){
+                        console.log("response of allSchoolStudentIdArrays Data Error  ",res);
+                    });  
+               
+        }
 
         $scope.submit = function () {
 
@@ -235,8 +246,10 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
 
             for (var i = 0; i < $scope.multiselectModelAdminCourse.length; i++) {
                 $scope.schoolListIds.push($scope.multiselectModelAdminCourse[i].id);
-                console.log($scope.schoolListIds);
+                //console.log($scope.schoolListIds);
             }
+            console.log('schoolListIds  ',$scope.schoolListIds);
+            $scope.OnChangeSchools()
         }, true);
 
 
@@ -247,6 +260,8 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
                 $scope.studentListIds.push($scope.multiselectModelAdminStudent[i].id);
                 console.log($scope.studentListIds);
             }
+            console.log('studentListIds  ',$scope.studentListIds);
+         $scope.OnChangeStudent();
         }, true);
 
 
