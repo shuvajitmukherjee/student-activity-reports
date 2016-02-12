@@ -95,7 +95,7 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
                      getSchoolStudent._get($scope.allSchoolIdArrays)
                      .then(function onSuccess(res){
                          console.log("response of _getschool Data  ",res);
-                         if(response.data.messageType ==="ERROR"){
+                         if(response.data.messageType !="SUCCESS"){
                                 notAuthenticated._showErrorMsg();
                                 return;
                         }
@@ -105,7 +105,7 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
                         getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
                          .then(function onSuccess(res){
                              console.log("response of allSchoolStudentIdArrays Data  ",res);
-                             if(response.data.messageType ==="ERROR"){
+                             if(response.data.messageType !="SUCCESS"){
                                 notAuthenticated._showErrorMsg();
                                 return;
                             }
@@ -153,7 +153,7 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
          getSchoolStudent._get($scope.schoolListIds)
                 .then(function onSuccess(res){
                     console.log("response of _getschool Data  ",res);
-                    if(response.data.messageType ==="ERROR"){
+                    if(res.data.messageType !="SUCCESS"){
                         notAuthenticated._showErrorMsg();
                         return;
                     }
@@ -164,7 +164,7 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
                     getSchoolStudentCourse._get($scope.allSchoolStudentIdArrays)
                     .then(function onSuccess(res){
                         console.log("response of allSchoolStudentIdArrays Data  ",res);
-                        if(response.data.messageType ==="ERROR"){
+                        if(res.data.messageType !="SUCCESS"){
                             notAuthenticated._showErrorMsg();
                             return;
                         }
@@ -184,7 +184,7 @@ admModule.controller('adminctrl', ['$scope', '$rootScope', '$routeParams', 'getS
                     getSchoolStudentCourse._get($scope.studentListIds)
                     .then(function onSuccess(res){
                         console.log("response of allSchoolStudentIdArrays Data  ",res);
-                        if(response.data.messageType ==="ERROR"){
+                        if(res.data.messageType !="SUCCESS"){
                             notAuthenticated._showErrorMsg();
                             return;
                         }

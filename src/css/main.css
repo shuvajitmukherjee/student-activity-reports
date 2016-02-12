@@ -75,7 +75,7 @@ body{
 .student-form p{
     margin:0;
     padding:8px 0 0 0;
-    float: right;
+   /* float: right;*/
 }
 .student-form .textarea-row{
     height:110px;
